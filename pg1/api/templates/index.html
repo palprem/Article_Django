@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>wellcome</title>
+    <style type="text/css">
+      body {
+          margin-left: 250px;
+          margin-right: 250px;
+          font-family: var(--bs-font-sans-serif);
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 1.5;
+          color: #212529;
+          background-color: #fff;
+          -webkit-text-size-adjust: 100%;
+          -webkit-tap-highlight-color: transparent;
+      }
+      
+      </style>
+  </head>
+  <body>
+
+
+    <div class="text-center bg-primary text-light p-2 mt-2 mb-3">wellcome! {{usarName}}
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+  <div class="col-md-8"><a class="btn btn-outline-warning" href="/login" role="button">Logout</a></div>
+
+    </div>
+    <div class="border border-primary p-3">
+    
+
+    <form method="POST" action="/index/">{%csrf_token%}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Title</label>
+        <input type="text" class="form-control" name="title" id="exampleInputEmail1"  placeholder="Title of article" required>
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Descrtiption</label>
+        <input type="text" class="form-control" name="atricle" id="exampleInputEmail1"  placeholder="wholel description of article" required>
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      
+
+      
+      <div class="form-group">
+        <label for="exampleInputPassword1">Image</label>
+        <input type="file" class="form-control" name="img" id="exampleInputPassword1" placeholder="Image of article" required>
+      </div>
+      <input type = "hidden" name="user" value="{{usarName}}">
+
+      
+      <button type="submit" class="btn btn-outline-warning">Submit</button>
+    </form>
+    <img src="{{ cmpny.img.url }}">
+    {% for i in cmpny %}
+    {% load static %}
+
+    <div class="card" style="width: 18rem;">
+      <!-- <img src="{{i.img }}" class="card-img-top"   alt="Card image cap"> -->
+      <img src="{{ i.img.url }}">      
+      <div class="card-body">
+        <h5 class="card-title">Title: {{i.title}}</h5>
+        <p class="card-text">Description: {{i.atricle}}</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      </div>
+    </div> 
+    {% endfor %}
+  </div>  
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
